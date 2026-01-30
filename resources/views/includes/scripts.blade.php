@@ -8,6 +8,12 @@
 
 @stack('googleMapJS')
 
+<script>
+    if (typeof initMap !== 'function') {
+        window.initMap = function() { console.log('Map callback triggered'); };
+    }
+</script>
+
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlMIVnxAhJgv8bi-lT5FjGpX6VTonZsAs&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google.maps_key') }}&callback=initMap">
 </script>
