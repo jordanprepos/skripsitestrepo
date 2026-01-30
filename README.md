@@ -31,7 +31,7 @@ A real-time earthquake monitoring website built with **Laravel 5.7** and **Googl
 
 ### Prerequisites
 
-- PHP >= 7.1.3
+- PHP >= 7.1.3 (Note: Laravel 5.7 is optimized for PHP 7.1-7.3. Using PHP 8.x may require additional compatibility fixes.)
 - Composer
 - Node.js & NPM
 - MySQL or any supported database (optional, for Laravel base)
@@ -64,6 +64,23 @@ A real-time earthquake monitoring website built with **Laravel 5.7** and **Googl
     php artisan serve
     ```
     The website will be accessible at `http://127.0.0.1:8000`.
+
+### ⚠️ Note for Laravel 5.7 (Important)
+
+This project uses **Laravel 5.7**, which was designed for **PHP 7.1 - 7.3**. Modern PHP versions (8.x) may throw "deprecated" warnings or encounter compatibility errors.
+
+If you find that the latest PHP version causes issues, you can install a specific older version using the `shivammathur/php` tap (the standard way to get older PHP versions on macOS):
+
+```bash
+# Tap the repository
+brew tap shivammathur/php
+
+# Install PHP 7.4 (most stable for older Laravel 5.x apps)
+brew install shivammathur/php/php@7.4
+
+# Link it so it becomes the default
+brew link --overwrite --force php@7.4
+```
 
 ## ⚙️ Configuration
 
