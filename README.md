@@ -1,83 +1,86 @@
-# skripsitestrepo
-This is my simple test environtment for my thesis prototype website.
-The website itself build with Laravel Framework.
-Current Laravel framework used in this repos is version 5.7.21.
-Please check below for the newest stable version of Laravel Framework 
-________________________________________________________________________________________________________________________________________
+# Earthquake Map Visualizer
 
+A real-time earthquake monitoring website built with **Laravel 5.7** and **Google Maps API**. This project visualizes seismic data from the **USGS (United States Geological Survey)** GeoJSON feeds to provide users with an interactive map of global earthquake activity.
 
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## 🌏 Features
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+- **Real-time Data Visualization**: Fetches live earthquake data directly from USGS GeoJSONP/GeoJSON feeds.
+- **Interactive Map**: Built with Google Maps API, featuring custom terrain and satellite views.
+- **Dynamic Magnitude Scaling**: Earthquake markers (circles) are dynamically sized based on their magnitude.
+- **Detailed Information**:
+    - Hover over markers to see specific details: Title, Magnitude, Type, Status, Significance, and Intensity.
+    - Sidebar/Overlay display for the selected earthquake's properties.
+- **Timeframe Filtering**:
+    - Past Day Map
+    - Past Week Map
+    - Past Month Map
+- **Auto-Refresh**: The map automatically refreshes its data every 30 seconds to stay up-to-date without reloading the page.
+- **KML Support**: Additional mapping capabilities using KML files.
 
-## About Laravel
+## 🛠️ Tech Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+- **Backend**: Laravel 5.7 (PHP 7.1+)
+- **Frontend**:
+    - JavaScript (Vanilla + jQuery)
+    - Google Maps JavaScript API
+    - Bootstrap 4.2
+    - Vue.js (for reactive data display components)
+- **Data Source**: [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Getting Started
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+### Prerequisites
 
-## Learning Laravel
+- PHP >= 7.1.3
+- Composer
+- Node.js & NPM
+- MySQL or any supported database (optional, for Laravel base)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+### Installation
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+1. **Clone the repository**
 
-## Laravel Sponsors
+    ```bash
+    git clone https://github.com/your-username/skripsitestrepo.git
+    cd skripsitestrepo
+    ```
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+2. **Install Dependencies**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
+    ```bash
+    composer install
+    npm install
+    ```
 
-## Contributing
+3. **Environment Setup**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-## Security Vulnerabilities
+4. **Run the Application**
+    ```bash
+    php artisan serve
+    ```
+    The website will be accessible at `http://127.0.0.1:8000`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## ⚙️ Configuration
 
-## License
+- **Google Maps API Key**: The project currently uses a hardcoded API key in `resources/views/includes/scripts.blade.php`. For production, it is recommended to move this to the `.env` file.
+- **Data Refresh Rate**: The refresh interval can be adjusted in the JavaScript files located in `public/js/maps/`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📂 Project Structure
 
-## Data Source 
+- `public/js/maps/`: Contains the JavaScript logic for individual map views (past day, week, month).
+- `resources/views/pages/`: Blade templates for the different map pages.
+- `routes/web.php`: Defines the routes for navigating between maps.
 
-Data used in this website is from Real-Time Feed created by USGS.
-For more information click link below.
-https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
+## 📜 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 📊 Data Source
+
+Data used in this website is provided by the Real-Time Feed created by **USGS**.
+For more information, visit the [USGS GeoJSON Feed page](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).
